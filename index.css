@@ -1,0 +1,798 @@
+/* Estilos generales */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+
+/* Fondo blanco para la navbar */
+
+/* Colores del texto del menú */
+.navbar-light .navbar-nav .nav-link {
+  color: #000000; /* Texto del menú en negro */
+  transition: color 0.3s ease; /* Transición suave al hacer hover */
+}
+
+/* Texto naranja al hacer hover en los enlaces del menú */
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #fe5000; /* Texto naranja al hacer hover */
+}
+
+/* Botón de contacto con estilo naranja */
+.navbar-light .navbar-nav .nav-link.btn-contacto {
+  background-color: #fe5000; /* Fondo naranja para el botón de contacto */
+  color: #ffffff; /* Texto blanco */
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Invertir colores del botón al hacer hover */
+.navbar-light .navbar-nav .nav-link.btn-contacto:hover {
+  background-color: #ffffff; /* Fondo blanco al hacer hover */
+  color: #fe5000; /* Texto naranja al hacer hover */
+  border: 2px solid #fe5000; /* Borde naranja */
+}
+
+
+/* Estilos personalizados para el menú */
+
+/* Estilos para el menú hamburguesa */
+.navbar-toggler {
+  border-color: #fe5000;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23d05b33' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(254, 80, 0, 0.8); /* Borde naranja con sombra al hacer clic */
+  outline: none; /* Elimina el borde predeterminado */
+}
+
+
+/* Estilos generales para compensar el sticky header */
+section[id] {
+  scroll-margin-top: 60px; /* Ajusta este valor según la altura real del header */
+}
+
+/* Ajuste de margen superior para reducir espacio en pantallas grandes */
+#inicio.hero {
+  padding-top: 0; /* Elimina el padding superior de la sección */
+}
+
+#inicio .row.align-items-center {
+  margin-top: -20px; /* Ajusta el espacio superior de la fila con logo y texto */
+}
+
+
+
+/* Estilos para la sección de Hero */
+
+/* Video de fondo ajustado a cover */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.video-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ocupar todo el ancho de la ventana */
+  height: 100vh; /* Ocupar todo el alto de la ventana */
+  object-fit: cover; /* Asegurar que cubra todo el espacio, aunque se corte parte del video */
+  object-position: center -90px; /* Mantener la parte inferior del video visible, cortando la parte superior */
+}
+
+.hero {
+  background: url("img/trigane_metal_fondo.webp") center center/cover no-repeat;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Ajusta la opacidad para oscurecer el fondo */
+  z-index: 1;
+}
+
+/* Ajuste del contenedor del contenido para que esté centrado */
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Capa de color superpuesta */
+.overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(254, 80, 0, 0.3); /* Usa gris (#53565A) con opacidad */
+  z-index: 1;
+}
+
+.hero h1,
+.hero p,
+.hero a {
+  z-index: 2;
+  color: white;
+}
+
+/*Anteriores configuraciones de hero*/
+.hero {
+  /* min-height: auto; */
+  position: relative;
+  overflow: hidden;
+  /* background: url("img/susferrin-hero-trigane-herramientas-de-alto-impacto-2.jpg")
+    center/cover no-repeat; */
+  color: #fe5000;
+  padding: 3rem 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.hero .container {
+  max-width: 1200px;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.video-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100vw;
+  height: auto;
+  object-fit: cover;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.tregane-logo {
+  width: 250px; /* Mantén este valor si es necesario para el tamaño de la imagen */
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero .title,
+.hero .lead {
+  font-size: 4rem;
+  font-weight: bolder;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  color: #fe5000;
+}
+
+.hero .lead {
+  font-size: 2rem;
+}
+
+/* Estilos generales para el botón CTA en la sección Hero */
+.hero .btn-cta {
+  display: block; /* Display block para permitir control de alineación */
+  margin: 1.5rem auto; /* Centrado por defecto en móviles */
+  width: fit-content; /* El ancho se ajusta al contenido del botón */
+}
+
+/* Estilos para botones CTA */
+.btn-cta {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: #fe5000;
+  color: white;
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: fit-content;
+  margin: 1.5rem auto;
+  display: block;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: white;
+  color: #fe5000;
+  border: 2px solid #fe5000;
+}
+
+/* Estilos del texto y botón */
+.hero .title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.hero .lead {
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.hero .btn-cta {
+  background-color: #fe5000;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.hero .btn-cta:hover {
+  background-color: white;
+  color: #fe5000;
+  border: 2px solid #fe5000;
+}
+
+/*PÁRRAFO EXPLICATIVO*/
+#about-trigane p {
+  text-align: justify;
+}
+
+
+/*CATEGORIAS*/
+/* Fondo naranja para el título */
+.llaves-header {
+  background-color: #fe5000;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 15px 0;
+}
+
+.llaves-header h2 {
+  color: white;
+  margin: 0;
+}
+
+/* Estilos generales para los productos */
+.product-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fe5000;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Estilos para las cards */
+.card {
+  background-color: white;
+  border: 2px solid #fe5000;
+}
+
+/* Imagen superior con borde */
+.card-img-top {
+  max-height: 250px;
+  object-fit: cover;
+  border-bottom-width: 4px;
+  border-color: #fe5000;
+}
+
+/* Estilos para el título del producto */
+.card-title {
+  background-color: #fe5000 !important;
+  color: white;
+  font-weight: bold;
+  margin: 0 !important;
+  padding: 10px 0 !important;
+  font-size: 1.2rem;
+  width: 100% !important;
+  text-align: center;
+}
+
+/* Estilos para el subtítulo */
+.card-subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fe5000;
+  margin-top: 15px; /* Ajuste de espacio superior */
+}
+
+/* Estilos para la descripción */
+.card-text {
+  font-size: 0.86rem;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+/* Espacio para la imagen rectangular adicional */
+.img-fluid-pie {
+  max-width: 100%;
+  height: auto;
+  margin-top: -15px;
+}
+
+/* Estilos para los atributos de los productos */
+.attribute-icon {
+  color: #FE5000; /* Color del ícono */
+  margin-right: 5px !important;
+}
+
+.attribute-text {
+  font-weight: bold !important; /* Negrita */
+  font-size: 0.625rem !important; /* Tamaño de letra más pequeño */ /* Alineación centrada */
+}
+
+
+/* Fondo naranja para el título de la sección de Contacto */
+.contacto-header {
+  background-color: #fe5000;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 15px 0;
+}
+
+.contacto-header h2 {
+  color: white;
+  margin: 0;
+}
+
+/* Estilos para el formulario de contacto */
+#contacto .form-control {
+  border-radius: 0.3rem;
+  border: 1px solid #ccc;
+}
+
+#contacto .form-control:focus {
+  border-color: #fe5000;
+  box-shadow: 0 0 0 0.2rem rgba(208, 91, 51, 0.25);
+}
+
+/* Estilos para el botón Cotizar que ocupa todo el ancho */
+.btn-cta-full {
+  padding: 0.75rem 1.5rem; /* Ajustar el padding para mayor tamaño del botón */
+  font-size: 1.5rem; /* Ajustar el tamaño de fuente */
+  background-color: #fe5000;
+  color: white;
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: fit-content;
+  text-align: center;
+  transition: all 0.3s ease; /* Separación con el contenido anterior */
+}
+
+.btn-cta-full:hover {
+  background-color: white;
+  color: #fe5000;
+  border: 2px solid #fe5000;
+}
+
+/* Estilos para el footer */
+footer {
+  color: white;
+  font-weight: 500;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #fe5000;
+  text-decoration: underline;
+}
+
+footer .social-icons img {
+  width: 24px;
+  transition: transform 0.3s;
+}
+
+footer .social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 15px;
+  right: 15px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 9999;
+}
+
+.whatsapp-float img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.whatsapp-float:hover {
+  background-color: #22bb5b;
+  cursor: pointer;
+}
+
+@media (max-width: 375px) {
+  .hero .title {
+    font-size: 2.5rem; /* Ajusta el tamaño de la fuente según lo necesites */
+    margin-bottom: 10px; /* Ajusta el margen inferior si es necesario */
+  }
+}
+
+@media (max-width: 767px) {
+  /* Estilos específicos para móviles */
+  .tregane-logo {
+    width: 100%; /* Asegura que la imagen ocupe el 100% del ancho en móviles */
+    max-width: 250px; /* Limita el ancho máximo */
+  }
+  .hero .title {
+    font-size: 2rem; /* Reducción del tamaño de fuente del título */
+    margin-bottom: 15px; /* Ajuste del margen inferior para mantener espaciado adecuado */
+  }
+  .hero .lead {
+    font-size: 1rem; /* Reducción del tamaño de fuente del texto secundario */
+    margin-bottom: 20px; /* Ajuste del margen inferior para separar del botón u otros elementos */
+  }
+  .hero .btn-cta {
+    padding: 0.5rem 1rem; /* Reducción del padding del botón para adecuar al espacio disponible */
+    font-size: 1rem; /* Reducción del tamaño de fuente del botón */
+  }
+
+  .accordion-body .row img {
+    max-width: 40%; /* Reduce más el tamaño de la imagen para móviles */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+  }
+
+  .whatsapp-float {
+    width: 50px; /* Ajusta el tamaño para móviles */
+    height: 50px;
+  }
+
+  /* Sección Hero especial para móviles */
+  .hero-mobile {
+    background-image: url("img/susferrin-hero-trigane-herramientas-de-alto-impacto-2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0; /* Elimina cualquier relleno extra */
+    margin: 0;  /* Asegúrate de que no haya márgenes que separen los elementos */
+    position: relative; /* Necesario para asegurar que los elementos estén encima del fondo */
+  }
+
+  /* Asegurar que los elementos estén encima del fondo */
+  .hero-mobile .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 1rem; /* Ajusta el relleno superior si necesitas algo de espacio */
+    padding-bottom: 0;  /* Elimina cualquier relleno innecesario en la parte inferior */
+  }
+
+  .hero-mobile .title {
+    font-size: 2rem; /* Mantén el tamaño del título ajustado a pantallas móviles */
+    margin-bottom: 0.5rem; /* Reducir el margen inferior para acercarlo al video */
+    color: white;
+}
+
+.hero-mobile .lead {
+    font-size: 1.2rem;
+    margin-bottom: 1rem; /* Reducir el espacio entre el subtítulo y el video */
+}
+
+.hero-mobile video {
+    width: 100vw; /* Asegura que el video ocupe todo el ancho de la pantalla */
+    height: auto;
+    object-fit: cover; /* Para que el video se ajuste correctamente */
+}
+
+
+  .hero-mobile .btn-cta {
+    background-color: #fe5000;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .hero-mobile .btn-cta:hover {
+    background-color: white;
+    color: #fe5000;
+    border: 2px solid #fe5000;
+  }
+
+  /* Fondo de imagen ajustado */
+  .hero-mobile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(
+      0,
+      0,
+      0,
+      0.3
+    ); /* Añadimos una ligera superposición para mejorar la legibilidad del texto */
+    z-index: 1; /* Esta capa queda justo debajo del contenido */
+  }
+}
+
+/* Estilos específicos para dispositivos pequeños */
+@media (max-width: 767.98px) {
+  .navbar-nav .nav-link,
+  .btn-cta,
+  footer .col-md-6.text-md-start,
+  footer .col-md-6.text-md-end {
+    text-align: left;
+  }
+
+  .form-control:nth-of-type(1),
+  .form-control:nth-of-type(3),
+  footer .col-md-6.text-md-start img {
+    margin-bottom: 15px;
+  }
+
+  .tregane-logo {
+    width: 250px; /* Mantén este valor si es necesario para el tamaño de la imagen */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero .title,
+  .hero .lead {
+    text-align: center;
+  }
+
+  .accordion-body .row img {
+    max-width: 40%;
+    margin: 0 auto;
+  }
+}
+
+/* Media query para ajustes en dispositivos que no son móviles */
+@media (min-width: 768px) {
+  /* Asumiendo que 768px es el umbral para dispositivos no móviles */
+  .hero .title,
+  .hero .lead {
+    text-align: left; /* Alineación a la izquierda para texto */
+  }
+  .hero .btn-cta {
+    margin: 1.5rem 0 1.5rem 0; /* Ajuste el margen para alinear a la izquierda */
+    display: inline-block; /* Hace que el botón se comporte como inline para alinear a la izquierda */
+  }
+  .tregane-logo {
+    width: 250px; /* Mantén este valor si es necesario para el tamaño de la imagen */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .accordion-body .row .col-md-3 {
+    flex: 0 0 40%; /* Aumenta el ancho de la columna de la imagen en tablets */
+    max-width: 40%; /* Asegura que no ocupe más del 40% */
+  }
+  .accordion-body .row .col-md-9 {
+    flex: 0 0 60%; /* Reduce el ancho de la columna de texto en tablets */
+    max-width: 60%; /* Asegura que no ocupe más del 60% */
+  }
+  .accordion-body .row.align-items-center {
+    display: flex;
+    align-items: center; /* Asegura la alineación vertical */
+    height: 100%; /* Opcional, ajusta según la necesidad para asegurar la altura adecuada */
+  }
+
+  .accordion-body .col-md-6 {
+    display: flex;
+    align-items: center; /* Aplica la alineación vertical dentro de cada columna */
+    justify-content: center; /* Centra el contenido horizontalmente si es necesario */
+  }
+
+  
+}
+
+/* Ajuste de 2 columnas en tablets */
+@media (min-width: 576px) and (max-width: 991px) {
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .tregane-logo {
+    width: 250px; /* Mantén este valor si es necesario para el tamaño de la imagen */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Media query específica para tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+  .accordion-body .row .col-md-1 {
+    flex: 0 0 30%; /* Aumenta el ancho de la columna de la imagen */
+    max-width: 30%;
+  }
+  .accordion-body .row .col-md-11 {
+    flex: 0 0 70%; /* Ajusta el ancho de la columna de texto */
+    max-width: 70%;
+  }
+
+  .accordion-body .row img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .tregane-logo {
+    width: 250px; /* Mantén este valor si es necesario para el tamaño de la imagen */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Ajuste específico para tablets (pantallas de 768px a 1024px de ancho) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero {
+    min-height: 60vh; /* Hacemos el video más pequeño en tablets */
+  }
+
+  .video-background video {
+    object-fit: cover; /* Para cubrir el área completa pero con menor tamaño */
+    height: 80vh; /* Reducimos un poco la altura del video */
+  }
+}
+
+/* Media query específica para tablets */
+@media (max-width: 991px) {
+  /* Ajustes comunes para las secciones de Filamentos e Impresoras 3D */
+  #filamentos .row,
+  #impresoras-3d .row {
+    flex-direction: column; /* Cambia la dirección del flex a vertical */
+  }
+
+  #filamentos .col-md-6,
+  #impresoras-3d .col-md-6 {
+    width: 100%; /* Hace que cada columna ocupe el 100% del ancho */
+    padding: 0; /* Elimina el padding para maximizar el uso del espacio */
+  }
+
+  #filamentos .col-md-6:first-child,
+  #impresoras-3d .col-md-6:first-child {
+    order: -1; /* Asegura que la imagen se muestre primero */
+  }
+
+  #filamentos .col-md-6:last-child,
+  #impresoras-3d .col-md-6:last-child {
+    padding: 20px; /* Añade padding alrededor del texto para mejorar la legibilidad */
+  }
+
+  #filamentos img,
+  #impresoras-3d img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área asignada sin perder proporción */
+    display: block; /* Elimina cualquier espacio extra alrededor de la imagen */
+    margin-bottom: 20px; /* Añade un margen inferior a la imagen para separarla del texto */
+  }
+  .tregane-logo {
+    width: 250px; /* Mantén este valor si es necesario para el tamaño de la imagen */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Estilos específicos para dispositivos de escritorio */
+@media (min-width: 992px) {
+  #filamentos .row,
+  #impresoras-3d .row {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  #filamentos .col-md-6:first-child,
+  #impresoras-3d .col-md-6:first-child {
+    flex: 1; /* Ajusta la proporción según sea necesario, ejemplo, 2 para darle más espacio */
+    padding-right: 0; /* Elimina el padding derecho para maximizar el uso del espacio de la imagen */
+  }
+
+  #filamentos .col-md-6:first-child img,
+  #impresoras-3d .col-md-6:first-child img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+    object-fit: cover; /* Cubre completamente el área asignada sin perder la proporción */
+    display: block; /* Elimina cualquier espacio extra alrededor de la imagen */
+  }
+
+  #filamentos .col-md-6:last-child,
+  #impresoras-3d .col-md-6:last-child {
+    flex: 1; /* Espacio adecuado para el texto */
+    padding-left: 20px; /* Espacio para la legibilidad del texto */
+    padding-right: 20px; /* Añade padding derecho para evitar que el texto se pegue a la derecha */
+  }
+  .tregane-logo {
+    width: 250px; /* Mantén este valor si es necesario para el tamaño de la imagen */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+      /* Reducir el tamaño del logo */
+      .printalot-logo {
+        max-width: 180px; /* Ajusta el ancho del logo según el tamaño deseado */
+        height: auto; /* Mantiene la proporción del logo */
+    }
+
+    /* Reducir el tamaño del título */
+    .hero .title {
+        font-size: 2rem; /* Tamaño más pequeño del título */
+        font-weight: bold;
+        margin-bottom: 5px; /* Ajusta el espacio inferior */
+    }
+
+    /* Reducir el tamaño del subtítulo */
+    .hero .lead {
+        font-size: 1.2rem; /* Tamaño más pequeño del subtítulo */
+        font-weight: normal;
+    }
+
+  
+}

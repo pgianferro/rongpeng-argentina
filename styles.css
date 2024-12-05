@@ -1,0 +1,422 @@
+/* Fuente personalizada */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar */
+header.navbar {
+    margin-top: 20px; /* Margen superior */
+    padding: 1rem 0; /* Espaciado vertical */
+}
+
+/* Fondo del logo */
+.navbar-brand {
+    background-color: #1b8bcc;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+/* Fondo adicional detrás del logo */
+.navbar {
+    background-color: #000; /* Fondo negro del resto del navbar */
+    padding: 1rem 0;
+}
+
+/* Logo */
+.navbar-brand img {
+    max-width: 200px; /* Agranda el logo */
+    background-color: #1b8bcc; /* Fondo azul */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Links de la Navbar */
+/* Estilos para los links del menú */
+.navbar-nav .menu-link {
+    color: white; /* Color inicial */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+.navbar-nav .menu-link:hover {
+    color: #1591bf; /* Cambia a azul claro al hover */
+}
+
+/* Estilos para el botón de contacto */
+.navbar-nav .btn-contacto {
+    background-color: #1b8bcc; /* Fondo inicial */
+    color: white; /* Texto inicial */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-nav .btn-contacto:hover {
+    background-color: #1591bf; /* Fondo más claro al hover */
+    color: white; /* Asegura que el texto quede blanco */
+}
+
+
+
+
+/* Botón hamburguesa */
+.navbar-toggler {
+    border-color: #1b8bcc;
+}
+
+.navbar-toggler-icon {
+    background-color: #1b8bcc;
+    border-radius: 2px;
+}
+
+/* Elimina el borde grueso al hacer clic */
+.navbar-toggler:focus {
+    outline: none; /* Elimina el borde predeterminado */
+    box-shadow: 0 0 0 2px #1b8bcc; /* Agrega un borde azul (#1b8bcc) */
+}
+
+/* Títulos de las secciones con imagen de fondo */
+.section-header {
+    background-image: url('img/banner-titles.webp'); /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    padding: 20px 0; /* Ajusta la altura del contenedor */
+    margin-bottom: 20px; /* Espaciado inferior */
+    text-align: center;
+    color: white; /* Color del texto */
+    position: relative; /* Necesario para el overlay */
+}
+
+/* Overlay para mayor contraste */
+.section-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa negra translúcida */
+    z-index: 1; /* Coloca el overlay detrás del texto */
+}
+
+/* Texto del título */
+.section-header h2 {
+    position: relative; /* Asegura que el texto esté sobre el overlay */
+    font-size: 1.5rem; /* Ajusta el tamaño de fuente */
+    font-weight: 700; /* Negrita */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    margin: 0;
+    z-index: 2; /* Coloca el texto sobre el overlay */
+}
+
+
+.section-offset {
+    scroll-margin-top: 80px; /* Ajusta el valor según la altura de tu navbar */
+}
+
+/* Carrousel */
+.carousel-inner img {
+    display: block;
+}
+
+/* Contenido informativo */
+#nosotros .container p {
+    font-size: 1.5rem; /* Tamaño del texto */
+    font-weight: 300; /* Texto ligero */
+    line-height: 1.8; /* Espaciado entre líneas */
+    color: #fff; /* Color blanco */
+    margin: 0; /* Quita márgenes */
+}
+
+#nosotros {
+    background-color: #000; /* Fondo negro */
+}
+
+/* Estilo general cards */
+.category-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #000; /* Fondo negro de respaldo */
+    height: 400px; /* Aumenta la altura */
+}
+
+/* Imagen de fondo */
+/* Ajusta la altura de las cards */
+.category-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #000; /* Fondo negro de respaldo */
+    height: 400px; /* Aumenta la altura */
+}
+
+/* Imagen de fondo */
+.category-img {
+    width: 100%;
+    height: 100%; /* Asegúrate de cubrir toda la card */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Título de la categoría */
+.category-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #1b8bcc;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* Overlay al hacer hover */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1b8bcc;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover efecto */
+.category-card:hover {
+    transform: translateY(-10px); /* Movimiento leve hacia arriba */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category-card:hover .overlay {
+    opacity: 0.5; /* Capa azul transparente */
+}
+
+.category-card:hover .category-img {
+    transform: scale(1.1); /* Zoom en la imagen */
+}
+
+/* Productos */
+.hidden {
+    display: none;
+}
+
+#loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 18px;
+    color: #555;
+}
+
+#loader::after {
+    content: '';
+    display: inline-block;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #555;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+#products .btn-primary {
+    display: inline-block;
+    margin: 0 auto; /* Centra el botón en la sección */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: #1b8bcc;
+}
+
+#products .btn-primary:hover {
+    background-color: #1591bf; /* Fondo más claro al hover */
+    transform: scale(1.05); /* Zoom leve al hover */
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Tarjetas de productos */
+.product-card {
+    background: #1b1b1b;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 15px;
+    text-align: left;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none; /* Elimina cualquier borde */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+}
+
+.product-card p {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.product-card .btn-primary {
+    background-color: #1b8bcc;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.product-card .btn-primary:hover {
+    background-color: #1591bf;
+    transform: scale(1.05); /* Efecto leve de zoom */
+}
+
+
+
+
+
+/* Ajusta el ancho del formulario en pantallas grandes */
+.form-wrapper {
+    max-width: 600px; /* Ajusta el ancho máximo */
+    margin: 0 auto; /* Centra el formulario */
+    padding: 0 15px; /* Agrega un padding lateral para dispositivos más pequeños */
+}
+
+/* Opcional: Estilo adicional para el botón */
+#contactForm .btn-primary {
+    background-color: #1b8bcc;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#contactForm .btn-primary:hover {
+    background-color: #1591bf; /* Color más oscuro al pasar */
+}
+
+/* Estilo del botón flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 15px;
+    right: 15px;
+    background-color: #000; /* Fondo negro */
+    color: #1b8bcc; /* Ícono de color azul */
+    border-radius: 50%; /* Botón redondo */
+    text-align: center;
+    font-size: 30px; /* Tamaño del ícono */
+    line-height: 60px; /* Centra el ícono verticalmente */
+    box-shadow: 2px 2px 3px #1b8bcc; /* Sombra del botón */
+    z-index: 9999; /* Asegura que esté por encima de otros elementos */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto hover */
+.whatsapp-float:hover {
+    background-color: #1b8bcc; /* Fondo azul en hover */
+    color: #fff; /* Ícono blanco en hover */
+    cursor: pointer;
+}
+
+/* Estilos generales para el footer */
+footer a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+footer .contact-info a:hover {
+    color: #1591bf; /* Color azul claro al hover */
+    text-decoration: underline;
+}
+
+/* Íconos de redes sociales */
+footer .social-icons i {
+    font-size: 24px; /* Tamaño inicial */
+    color: #1b8bcc; /* Color inicial */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .social-icons i:hover {
+    color: #1591bf; /* Color al hover */
+    transform: scale(1.2); /* Agrandamiento al hover */
+}
+
+/* Información de contacto */
+footer .contact-info i {
+    color: #1b8bcc; /* Íconos con el color inicial */
+    margin-right: 5px;
+}
+
+footer .contact-info i:hover {
+    color: #1591bf; /* Color al hover */
+    transform: scale(1.2); /* Agrandamiento al hover */
+}
+
+
+
+
+/* Slider en móviles */
+@media (max-width: 767px) {
+    #carouselExample .carousel-inner img {
+        height: 450px; /* Duplica la altura */
+        object-fit: cover; /* Mantiene el efecto de cubrir */
+        object-position: right; /* Alinea la imagen hacia la izquierda */
+    }
+    #contactForm .row .col-md-6:first-child {
+        margin-bottom: 15px; /* Ajusta el margen inferior */
+    }
+
+    .navbar-nav .nav-link,
+    .btn-cta,
+    footer .col-md-6.text-md-start,
+    footer .col-md-6.text-md-end {
+      text-align: left !important;
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 991.98px) {
+    .navbar {
+        padding: 0.5rem 0; /* Reduce el espaciado en pantallas pequeñas */
+    }
+    
+}
+
+/* Slider en tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #carouselExample .carousel-inner img {
+        height: 600px; /* Mayor altura en tablets */
+        object-fit: cover; /* Cubre todo el contenedor */
+        object-position: right; /* Centra la imagen */
+    }
+}
