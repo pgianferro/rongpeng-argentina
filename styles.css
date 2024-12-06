@@ -382,7 +382,15 @@ footer .contact-info i:hover {
     transform: scale(1.2); /* Agrandamiento al hover */
 }
 
+@media (max-width: 576px) { /* Ajusta el tamaño para móviles */
+    .category-card {
+        height: 250px; /* Ajusta el alto deseado */
+    }
 
+    .category-img {
+        height: 250px; /* Asegúrate de que la imagen también se ajuste */
+    }
+}
 
 
 /* Slider en móviles */
