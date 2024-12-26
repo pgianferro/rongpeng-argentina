@@ -120,7 +120,7 @@
             <div class="section-header text-white text-center py-5 mb-3">
                 <h2 class="fw-bold text-uppercase mb-0">Categorías</h2>
             </div>
-            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 m-3">
+            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3 m-3">
                 <div class="col">
                     <div class="category-card" data-category="cat1">
                         <img src="img/categorias/category-cover.webp" alt="Llaves de impacto" class="category-img">
@@ -154,6 +154,13 @@
                         <img src="img/categorias/category-cover.webp" alt="Misceláneos" class="category-img">
                         <div class="overlay"></div>
                         <div class="category-title">Misceláneos</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="category-card" data-category="cat6">
+                        <img src="img/categorias/category-cover.webp" alt="Accesorios" class="category-img">
+                        <div class="overlay"></div>
+                        <div class="category-title">Accesorios</div>
                     </div>
                 </div>
             </div>
@@ -262,9 +269,9 @@
     <script>
         const products = {
             cat1: [
-                { name: "Llave de Impacto 1", image: "img/products/example.webp", description: "Descripción para Llave de Impacto 1." },
-                { name: "Llave de Impacto 2", image: "img/products/example.webp", description: "Descripción para Llave de Impacto 2." },
-                { name: "Llave de Impacto 3", image: "img/products/example.webp", description: "Descripción para Llave de Impacto 3." },
+                { name: "Llave Pistola Impacto Neumatica 1/2 + Tubos 610 Nm Rongpeng", image: "img/products/Llave-Pistola-Impacto Neumatica-1_2-01.webp", description: "Modelo RT-5268\n\n Características del producto:\n • Doble Martillo de servicio pesado\n\n Especificaciones Técnicas\n • Accionamiento cuadrado: 1/2 \"\n • Velocidad libre: 7500 rpm\n • Máx. Par: 450 pies-lb (610N-m)\n • Entrada de aire: 1/4 \"\n • Consumo de aire: 8 cfm = 227 Litros por minuto [l/min]\n • Peso neto: 2.1 kg\n • Incluye\n Bocallaves 1/2\": 9,10,11,13,14,17,19,22,24,27mm\n 1- Barra de extensión de unidad -1/2\n 1- Acople\n 1- Lubricador\n 1- Recipiente para Aceite\n Caja Plástica" },
+                { name: "Llave De Impacto Neumatica Encastre De 1/2 675 Nm Rongpeng", image: "img/products/Llave-Pistola-Impacto Neumatica-1_2-02.webp", description: "Modelo RP-7445\n\n Características del producto:\n • Doble Martillo con regulador de torque\n\n Especificaciones Técnicas:\n • Velocidad Libre: 7000 RPM\n • Torque de Trabajo: 675 N·m\n • Entrada de Aire (NPT): 1/4 \"\n • Manguera de Aire (ID): 3/8 \"\n • Consumo Promedio de Aire: 198 l/min\n • Peso Neto: 2.7 kg\n • Longitud Total: 190 mm\n • Compresora de Aire Sugerida: 3 HP" },
+                { name: "Llave Impacto Neumatica Mini Jumbo Encastre De 1/2 Rongpeng", image: "img/products/Llave-Pistola-Impacto Neumatica-1_2-03.webp", description: "Modelo RP-7426\n\n Características del producto:\n • Llave Impacto Neumatica Mini Jumbo Encastre\n\n Especificaciones técnicas:\n • Cuadradillo: 1/2 \"\n • Capacidad del Tornillo: 16 mm\n • Velocidad Libre: 8500 RPM\n • Torque Máximo: 610 N·m\n • Entrada de Aire (NPT): 1/4 \"\n • Diámetro de Manguera de Aire (ID): 10 MM\n • Consumo de Aire Promedio: 150 LTS / MINUTO\n • Peso Neto: 1.45 kg\n • Presión de Trabajo: 6.3 bar\n • Compresor recomendado: 3 HP o superior" },
             ],
             cat2: [
                 { name: "Amoladora 1", image: "img/products/moladora.webp", description: "Descripción para Amoladora 1." },
@@ -285,6 +292,11 @@
                 { name: "Misceláneos 1", image: "img/products/moladora.webp", description: "Descripción para Misceláneos 1." },
                 { name: "Misceláneos 2", image: "img/products/moladora.webp", description: "Descripción para Misceláneos 2." },
                 { name: "Misceláneos 3", image: "img/products/moladora.webp", description: "Descripción para Misceláneos 3." },
+            ],
+            cat6: [
+                { name: "Accesorios 1", image: "img/products/moladora.webp", description: "Descripción para Accesorios 1." },
+                { name: "Accesorios 2", image: "img/products/moladora.webp", description: "Descripción para Accesorios 2." },
+                { name: "Accesorios 3", image: "img/products/moladora.webp", description: "Descripción para Accesorios 3." },
             ],
             // Agrega más categorías y productos según sea necesario
         };
@@ -318,15 +330,16 @@
                             const productCard = document.createElement('div');
                             productCard.classList.add('col-md-4'); // Asegura que cada producto ocupe 1/3 de la fila
                             productCard.innerHTML = `
-                        <div class="product-card p-3">
-                            <img src="${product.image}" alt="${product.name}" class="img-fluid mb-3">
-                            <h3 class="fw-bold">${product.name}</h3>
-                            <p>${product.description}</p>
-                            <a href="https://wa.link/93njz2" target="_blank" class="btn btn-primary">Consultar</a>
-                        </div>
-                    `;
+        <div class="product-card p-3">
+            <img src="${product.image}" alt="${product.name}" class="img-fluid mb-3">
+            <h3 class="fw-bold">${product.name}</h3>
+            <p>${product.description.replace(/\n/g, '<br>')}</p> <!-- Reemplaza \n con <br> -->
+            <a href="https://wa.link/93njz2" target="_blank" class="btn btn-primary">Consultar</a>
+        </div>
+    `;
                             productContent.appendChild(productCard);
                         });
+
 
                         // Desplázate a la sección de productos
                         document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
