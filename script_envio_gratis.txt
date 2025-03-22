@@ -1,0 +1,138 @@
+// **Envío gratis con 2 unidades a ciertos CP**
+
+add_filter('woocommerce_package_rates', 'custom_shipping_logic_for_tires', 10, 2);
+
+function custom_shipping_logic_for_tires($rates, $package) {
+    error_log("------ INICIO FILTRO DE ENVÍO ------");
+
+    // CATEGORÍAS PERMITIDAS
+    $category_unit = 1909;  // Neumáticos por unidad (1 neumático por unidad)
+    $category_kit2 = 2395;  // Neumáticos kit x2 (2 neumáticos por unidad)
+    $category_kit4 = 2400;  // Neumáticos kit x4 (4 neumáticos por unidad)
+
+    // LISTA DE CÓDIGOS POSTALES PARA ENVÍO GRATUITO
+    $free_shipping_zipcodes = array(
+        '1846', '1852', '1849', '1850', '1856', '1845', '1854', '1852', '1847',
+        '1870', '1871', '1874', '1870', '1872', '1874', '1875',
+        '1884', '1893', '1888', '1885', '1888', '1885', '1886', '1886', '1884',
+        '1923', '1923', '1923', '1923', '1923', '1923',
+        '2804', '2814', '2804',
+        '1669', '1635', '1925', '1925',
+        '1625', '1619', '1623', '1627', '1628',
+        '1842', '1804', '1805', '1838', '1842',
+        '1804', '1804', '1806',
+        '1889', '1888', '1888', '1888', '1887', '1888', '1888',
+        '1619', '1748', '1862', '1686', '1688', '1688',
+        '1623', '1714', '1713',
+        '1665', '1778', '1768', '1752', '1704', '1754', '1754',
+        '1759', '1757', '1765', '1755', '1770', '1763', '1763',
+        '1900', '1897', '1901', '1900',
+        '1903', '1900',
+        '1824', '1824', '1825', '1826', '1822',
+        '1828', '1836', '1832', '1834', '1834', '1838', '1832',
+        '6706', '6700', '6708', '6703',
+        '1615', '1612', '1613', '1613', '1667',
+        '1727', '1716', '1722', '1722', '1718',
+        '1746', '1744', '1744', '1742', '1744',
+        '1712', '1684', '1706', '1708',
+        '1670', '1629',
+        '1876', '1878', '1878', '1881',
+        '1646', '1644', '1646',
+        '1641', '1643', '1609', '1640', '1642', '1607',
+        '1650', '1653', '1672',
+        '1661', '1663', '1663',
+        '1864', '1865',
+        '1621', '1611', '1618', '1617', '1648', '1618',
+        '1678', '1702', '1657', '1676', '1682',
+        '1605', '1602', '1637', '1607', '1636', '1638', '1603',
+        '1631', '2800'
+    );
+
+    // OBTENER CÓDIGO POSTAL DEL CLIENTE
+    $shipping_zipcode = isset($package['destination']['postcode']) ? $package['destination']['postcode'] : '';
+
+    // ✅ OCULTAR "ENVÍO GRATUITO" POR DEFECTO
+    foreach ($rates as $rate_id => $rate) {
+        if ($rate->method_id === 'free_shipping') {
+            unset($rates[$rate_id]);
+            error_log("❌ Eliminando Envío Gratuito por defecto.");
+        }
+    }
+
+    // ✅ SI NO HAY CÓDIGO POSTAL, MANTENER MÉTODOS NORMALES SIN "ENVÍO GRATUITO"
+    if (empty($shipping_zipcode)) {
+        error_log("⚠ No se ingresó código postal. Mostrando solo los métodos normales.");
+        return $rates;
+    }
+
+    error_log("Código postal ingresado: " . $shipping_zipcode);
+
+    // CONTAR NEUMÁTICOS POR CATEGORÍA
+    $total_tires = 0;
+    $other_category_detected = false;
+
+    foreach (WC()->cart->get_cart() as $cart_item) {
+        $product = $cart_item['data'];
+        $product_id = $product->get_id();
+        $terms = get_the_terms($product_id, 'product_cat');
+
+        if ($terms && !is_wp_error($terms)) {
+            $found_category = false;
+            foreach ($terms as $term) {
+                if ($term->term_id == $category_unit) {
+                    $total_tires += $cart_item['quantity'];  // 1 neumático por unidad
+                    $found_category = true;
+                } elseif ($term->term_id == $category_kit2) {
+                    $total_tires += $cart_item['quantity'] * 2;  // 2 neumáticos por unidad
+                    $found_category = true;
+                } elseif ($term->term_id == $category_kit4) {
+                    $total_tires += $cart_item['quantity'] * 4;  // 4 neumáticos por unidad
+                    $found_category = true;
+                }
+            }
+            // Si un producto no pertenece a las categorías permitidas, se anula el Envío Gratuito
+            if (!$found_category) {
+                $other_category_detected = true;
+            }
+        }
+    }
+
+    error_log("Total de neumáticos en carrito: " . $total_tires);
+
+    // ✅ SI SE DETECTA UNA CATEGORÍA NO PERMITIDA, SE ANULA EL ENVÍO GRATUITO
+    if ($other_category_detected || !in_array($shipping_zipcode, $free_shipping_zipcodes)) {
+        error_log("❌ Se encontraron productos no permitidos o CP no válido. Dejando métodos normales.");
+        return $rates;
+    }
+
+    // ✅ VALIDACIÓN DE REGLAS PARA ENVÍO GRATUITO
+    if (
+        ($total_tires >= 2 && $total_tires <= 4) // ✅ Neumáticos por unidad: 2 a 4
+        || ($total_tires == 1 && isset($cart_item['data']) && in_array($cart_item['data']->get_id(), [$category_kit2, $category_kit4])) // ✅ Kit x2 o Kit x4: Solo 1 unidad
+        || ($total_tires == 2 && isset($cart_item['data']) && $cart_item['data']->get_id() == $category_kit2) // ✅ Kit x2: Hasta 2 unidades
+    ) {
+        // ✅ Activar Envío Gratuito
+        error_log("✅ Se cumplen las condiciones. Restaurando Envío Gratuito.");
+
+        $rates['free_shipping'] = new WC_Shipping_Rate(
+            'free_shipping', 
+            'Envío Gratis', 
+            0, 
+            array(), 
+            'free_shipping'
+        );
+
+        // Eliminar otros métodos
+        foreach ($rates as $rate_id => $rate) {
+            if ($rate->method_id !== 'free_shipping') {
+                unset($rates[$rate_id]);
+                error_log("❌ Eliminado método de envío: " . $rate->method_id);
+            }
+        }
+    } else {
+        error_log("❌ No se cumplen las condiciones para Envío Gratuito.");
+    }
+
+    error_log("------ FIN FILTRO DE ENVÍO ------");
+    return $rates;
+}
